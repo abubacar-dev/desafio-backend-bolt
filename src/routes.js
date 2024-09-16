@@ -1,7 +1,7 @@
 export const routes = [
     {
         method: 'GET',
-        path: '/user',
+        path: '/user/:name',
         handler: (req, res) => {
             return res
                 .setHeader('Content-Type', 'application/json')
