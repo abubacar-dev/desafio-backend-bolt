@@ -16,12 +16,3 @@ export class GetApi {
         return repos
     }
 }
-
-async function log() {
-    const getApi = new GetApi()
-
-    console.log(await getApi.getGitHubApi('boltjz'));
-    
-}
-
-log()
