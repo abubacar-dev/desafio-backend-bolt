@@ -1,0 +1,13 @@
+{
+  "name": "desafio-backend-bolt",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "desafio de uma api rest simple para consumir a api do github",
+  "main": "server.js",
+  "scripts": {
+    "test": "node --wacth src/server.js"
+  },
+  "keywords": [],
+  "author": "mussinady abubacar",
+  "license": "ISC"
+}
