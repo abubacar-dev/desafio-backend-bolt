@@ -1,5 +1,6 @@
 import http from 'node:http';
 import { routes } from './routes.js';
+import { extractQueryParams } from './utils/extractqueryparams.js';
 
 const host = 'localhost';
 const port = 3000;
@@ -13,7 +14,10 @@ const server = http.createServer((req, res) => {
 
     if(route) {
         const routeParams = req.url.match(route.path)
-        req.param = { ...routeParams.groups }
+        const { query, ...params } = routeParams.groups
+        
+        req.param = params
+        req.query = query ? extractQueryParams(query) : {}
         
         return route.handler(req, res)
     }
