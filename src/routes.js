@@ -16,22 +16,26 @@ export const routes = [
 
             const repos = await getApi.getGitHubApi(name, page, per_page)
 
-            if(repos.length !== 0) {
-                pagination = {
-                    path: req.url,
-                    page,
-                    prev: Number(page) - Number(1) >= Number(1) ? Number(page) - Number(1) : null,
-                    next: Number(page) + Number(1) > Number(page) ? Number(page) + Number(1) : null,
-                    per_page
-                }
+            pagination = {
+                path: req.url,
+                page,
+                prev: Number(page) - Number(1) >= Number(1) ? Number(page) - Number(1) : null,
+                next: Number(page) + Number(1) > Number(page) ? Number(page) + Number(1) : null,
+                per_page
             }
 
-            return res
+            if(repos.length !== 0) {
+                return res
                 .setHeader('Content-Type', 'application/json')
                 .end(JSON.stringify({
                     repos,
                     pagination
                 }))
+            }else {
+                res.end(JSON.stringify({
+                    message: `back to previw the page ${page - 1} is last one`
+                }))
+            }
         }
     }
 ]

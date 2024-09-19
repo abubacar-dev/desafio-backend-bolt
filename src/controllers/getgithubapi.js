@@ -19,7 +19,7 @@ export class GetApi {
 
                 return repos
             }else {
-                console.log('Server ERROR:', data.error.mensage);
+                console.log('Server ERROR:', data.error);
             }
 
         } catch (error) {
