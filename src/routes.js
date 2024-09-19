@@ -12,7 +12,7 @@ export const routes = [
         handler: async (req, res) => {
             const { name } = req.param
             const { page = 1 } = req.query
-            const per_page = 2;
+            const per_page = 5;
 
             const repos = await getApi.getGitHubApi(name, page, per_page)
 
