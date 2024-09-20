@@ -12,14 +12,21 @@ Para testar esse projeto rode:
 ```bash
 npm run dev
 ```
+#### Retorna os itens requisitados
 
-```http
-    GET http://localhost:3000/user/${name}
-```
+`GET http://localhost:3000/user/${name}`
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `name`      | `string` | **Obrigatório**. |
+| `name`      | `string` | **Obrigatório** caso não retorna **404**. |
+
+#### Retorna os itens com a pagina indicada
+
+`GET http://localhost:3000/user/${name}?page={page}`
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `page`      | `string ou number` | **Não obrigatório** por padrão retorna `page = 1`. |
 
 ## Apêndice
 
@@ -35,4 +42,6 @@ npm run dev
 
 ## Demonstração
 
-Insira um gif ou um link de alguma demonstração
+![](.github/api-gif.gif)
+
+<p align="center"> Developed with ❤️ by Mussinady Abubacar</p>
