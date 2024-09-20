@@ -14,7 +14,7 @@ export const routes = [
             const { page = 1 } = req.query
             const per_page = 5;
 
-            const repos = await getApi.getGitHubApi(name, page, per_page)
+            const repos = await getApi.getGitHubApi(name, page, per_page, res)
 
             pagination = {
                 path: req.url,
@@ -33,7 +33,7 @@ export const routes = [
                 }))
             }else {
                 res.end(JSON.stringify({
-                    message: `back to previw the page ${page - 1} is last one`
+                    message: `repos not found back to last page ${page - 1}`
                 }))
             }
         }

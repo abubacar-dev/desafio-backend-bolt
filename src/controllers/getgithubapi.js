@@ -1,11 +1,11 @@
 export class GetApi {
-    async getGitHubApi(name, page, per_page) {
+    async getGitHubApi(name, page, per_page, res) {
         
         try {
             const response = await fetch(`https://api.github.com/users/${name}/repos?per_page=${per_page}&page=${page}`)
         
             const data = await response.json()
-            
+
             const repos = []
             
             if(response.ok) {
@@ -18,12 +18,16 @@ export class GetApi {
                 })
 
                 return repos
-            }else {
-                console.log('Server ERROR:', data.message);
+
+            } else {
+                res.end(JSON.stringify({
+                    message: data.message,
+                    status: data.status
+                }))
             }
 
         } catch (error) {
-            console.log('Fetch ERROR:', error);
+            console.log('Fetch ERROR:');
         }
     }
 }

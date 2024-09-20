@@ -25,7 +25,8 @@ const server = http.createServer((req, res) => {
     return res
         .writeHead(404)
         .end(JSON.stringify({
-            error: 'Resource Not Found...'
+            message: 'Resource Not Found...',
+            status: 404
         }))
 })
 
