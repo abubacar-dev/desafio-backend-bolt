@@ -14,8 +14,7 @@ export const routes = [
             const { page = 1 } = req.query
             const per_page = 5;
 
-            const repos = await getApi.getGitHubApi(name, page, per_page, res)
-
+            const data = await getApi.getGitHubApi(name, page, per_page)
             pagination = {
                 path: req.url,
                 page,
@@ -23,6 +22,14 @@ export const routes = [
                 next: Number(page) + Number(1) > Number(page) ? Number(page) + Number(1) : null,
                 per_page
             }
+            const repos = []
+            data.map(repo => {
+                return repos.push({
+                    name: repo.name,
+                    stars: repo.stargazers_count,
+                    forks: repo.forks,
+                })
+            })
 
             if(repos.length !== 0) {
                 return res
